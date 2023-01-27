@@ -1,0 +1,7 @@
+.Vborder {
+    border-right: 1px solid #dee2e6;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}

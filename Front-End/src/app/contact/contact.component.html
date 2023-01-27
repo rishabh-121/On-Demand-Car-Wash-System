@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <img src="assets\contact.jpg" alt="about us" class="d-block w-100" height="400">
+    </div>
+    <div>
+        <h3 style="text-align: center; color:darkgray;"><u>CONTACT US</u></h3>
+        <p>We are here to answer your queries. Support by call or email or submit your feedback/complaints regarding our
+            products and services to serve you better in future. Please get in touch and our expert support team will answer all your queries.</p>
+        <p>Please fill in your details in below contact from for getting prompt response.</p>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mx-auto" style="background:#343a40;">
+        <div class="col-md-5 p-5">
+            <form id="Contact_form" class="White was-validated">
+                <div class="form-group">
+                    <label for="user_name" style="color: white;">Name:</label>
+                    <input type="text" class="form-control" name="user_name" value="" id="user_name" onblur="ReplaceSplChar('user_name', 't')" placeholder="Enter Name" required="">
+                </div>
+                <div class="form-group">
+                    <label for="user_mobile_no"  style="color: white;">Mobile No:</label>
+                    <div class="Red mb-2" id="DivErr">
+                        <span id="ErrDsc"></span>
+                    </div>
+                    <input type="text" class="form-control" name="user_mobile_no" value="" id="user_mobile_no" pattern=".{10}" onblur="ReplaceSplChar('user_mobile_no', 'n')" onkeypress="ErrClearing('DivErr', 'ErrDsc')" required="" placeholder="Enter Mobile No."> 
+                </div>
+                <div class="form-group">
+                    <label for="email_id"  style="color: white;">Email:</label>
+                    <input type="text" class="form-control" name="email_id" value="" id="email_id" onblur="ReplaceSplChar('email_id', 'e')" required="" placeholder="Enter Email id">
+                </div>
+                  
+                
+                <div class="form-group">
+                    <label for="cont_location"  style="color: white;">Location:</label>
+                    <input type="text" class="form-control" name="cont_location" value="" id="cont_location" onblur="ReplaceSplChar('cont_location', 't')" required="" placeholder="Enter your location">
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="cont_msg"  style="color: white;">Message:</label>
+                    <textarea rows="5" class="form-control" name="cont_msg" id="cont_msg" required="" placeholder="Enter your Queries"></textarea>
+                </div>
+
+                <div class="Red my-3 pl-2" id="DivErr5">
+                    <span id="DivErr5"></span>
+                </div>
+
+                <button class="btn btn-primary form-control" onclick="Submition('Contact_form', 'Contact_form')">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

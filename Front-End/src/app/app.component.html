@@ -1,0 +1,170 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="assets\car-logo.png" alt="car-logo" width="60" height="30" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home" routerLink="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="/booking" class="nav-link">Booking</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          More
+        </a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color: white" href="/booking">Package</a>
+          <a class="dropdown-item" style="color: white" href="#">FAQ</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" style="color: white" href="#">Privacy Policy</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutus" (click)="gotoAbout()">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+      <li class="nav-item" *ngIf="showUserBoard">
+        <a href="/order" class="nav-link">Your Orders</a>
+      </li>
+      <div>
+        <li class="nav-item dropdown" *ngIf="showAdminBoard">
+          <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin Board
+          </a>
+          <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" style="color: white" href="/admin">All Bookings</a>
+            <a class="dropdown-item" style="color: white" data-toggle="modal" data-target="#staticBackdrop">Add
+              Washer</a>
+          </div>
+        </li>
+      </div>
+      <!-- Modal to register washer -->
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Register Washer</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-row">
+                <div class="form-group col ml-2">
+                  <label for="inputEmail4">User Name</label>
+                  <input type="text" name="firstName" class="
+              form-control" placeholder="User name" required="" [(ngModel)]="registerWasherform.username"
+                    style="background-color: #e6f2ff" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col ml-2">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" name="Email" class="
+              form-control" placeholder="Email" required="" [(ngModel)]="registerWasherform.email"
+                    style="background-color: #e6f2ff" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col ml-2">
+                  <label for="inputEmail4">Password</label>
+                  <input type="password" name="Password" class="
+              form-control" placeholder="Password" required="" [(ngModel)]="registerWasherform.password"
+                    style="background-color: #e6f2ff" />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="registerWasherOnSubmit()">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link">Washer Board</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <div class="mx-2">
+      <button *ngIf="!isLoggedIn" class="btn btn-success" (click)="gotologin()" style="margin-right: 16px"
+        data-toggle="modal" data-target="#LoginModal">
+        Login
+      </button>
+      <button *ngIf="!isLoggedIn" class="btn btn-danger" style="margin-right: 16px" data-toggle="modal"
+        data-target="#signupModal">
+        Sign Up
+      </button>
+      <button *ngIf="isLoggedIn" class="btn btn-info" style="margin-right: 16px" data-toggle="modal"
+        data-target="#signupModal" (click)="gotoProfile()">
+        {{ username }}
+      </button>
+      <button *ngIf="isLoggedIn" class="btn btn-danger" style="margin-right: 16px" data-toggle="modal"
+        data-target="#signupModal" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+
+<router-outlet></router-outlet>
+<!-- <app-home></app-home> -->
+<!-- <app-login></app-login> -->
+<!-- <app-about></app-about> -->
+<!-- <app-contact></app-contact> -->
+<!-- <app-booking></app-booking> -->
+<!-- <app-book-now></app-book-now> -->
+
+<footer class="text-center text-white" style="background-color: #f1f1f1">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-linkedin"></i></a>
+      <!-- Github -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2021 Copyright: All Rights Reserved To
+    <a class="text-dark" href="#">Company</a>
+  </div>
+  <!-- Copyright -->
+</footer>

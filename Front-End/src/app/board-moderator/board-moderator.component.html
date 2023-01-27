@@ -1,0 +1,220 @@
+<div class="container-fluid mr-5">
+    <p *ngIf="isContent">{{content}}</p>
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Available Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of allBooking">
+        <div class="row m-2 mt-4"
+            *ngIf="!(order.cancelled || order.isWasherCancelled!== null && order.isWasherCancelled.includes(currentUser.username) || order.washerName==currentUser.username)">
+            <div class="col-3">
+                <img src="{{order.imageString}}" alt="about us" width="300" height="200">
+
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span> </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> City <span>{{order.city}}</span> </div>
+                <div class="row d-flex justify-content-between"> State <span>{{order.state}}, {{order.zip}} </span>
+                </div>
+                <div class="row d-flex justify-content-between"> Full Address <span>{{order.address1}} ,
+                        {{order.address2}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col-1 offset-10">
+                        <button type="button" class="btn btn-success"
+                            (click)="acceptBookingByWasher(order.id,currentUser.username)">Accept</button>
+                    </div>
+                    <div class="col-1  ">
+                        <button type="button" class="btn btn-danger"
+                            (click)="cancelBookingByWasher(order.id,currentUser.username)">Decline</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Accepted Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of allBooking">
+        <div class="row m-2 mt-4" *ngIf="order.washerName==currentUser.username && order.status=='Pending'">
+            <div class="col-3">
+                <img src="{{order.imageString}}" alt="about us" width="300" height="200">
+
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span></div>
+
+                <div class="row d-flex justify-content-between"> City <span>{{order.city}}</span> </div>
+                <div class="row d-flex justify-content-between"> State <span>{{order.state}}, {{order.zip}} </span>
+                </div>
+                <div class="row d-flex justify-content-between"> Full Address <span>{{order.address1}} ,
+                        {{order.address2}}</span> </div>
+
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total
+                        Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 "> <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#static" style="background-color: cornflowerblue;"
+                            (click)="done(order.id)">Done</button>
+                    </div>
+                </div>
+                <!-- Modal to register washer -->
+                <div class="modal fade" id="static" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Washed Car Photo</h5>
+                                <button type="button" class="btn-close" data-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group m-3">
+                                    <label for="exampleFormControlFile1">Add Car image</label>
+                                    <input type="file" (change)="onSelectedFile($event)" class="form-control-file"
+                                        id="exampleFormControlFile1" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary"
+                                        (click)="doneBookingByWasher(doneOrderId)">Ok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+
+
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Completed Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of allBooking">
+        <div class="row m-2 mt-4" *ngIf="order.washerName==currentUser.username && order.status=='done'">
+            <div class="col-3">
+                <img src="{{order.imageString}}" alt="about us" width="300" height="200">
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> City <span>{{order.city}}</span> </div>
+                <div class="row d-flex justify-content-between"> State <span>{{order.state}}, {{order.zip}} </span>
+                </div>
+                <div class="row d-flex justify-content-between"> Full Address <span>{{order.address1}} ,
+                        {{order.address2}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total
+                        Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 ">
+                        <p class="font-weight-bold font-italic" style="color:cadetblue;">Completed</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+
+
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Cancelled Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of allBooking">
+        <div class="row m-2 mt-4"
+            *ngIf="order.isWasherCancelled!== null && order.isWasherCancelled.includes(currentUser.username)">
+            <div class="col-3">
+                <img src="{{order.imageUrl}}" alt="about us" width="300" height="200">
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> City <span>{{order.city}}</span> </div>
+                <div class="row d-flex justify-content-between"> State <span>{{order.state}}, {{order.zip}} </span>
+                </div>
+                <div class="row d-flex justify-content-between"> Full Address <span>{{order.address1}} ,
+                        {{order.address2}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total
+                        Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 ">
+                        <p class="font-weight-bold font-italic" style="color: red;"><del>Cancelled</del></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+</div>

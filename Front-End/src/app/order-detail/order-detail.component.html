@@ -1,0 +1,114 @@
+<div class="container-fluid mr-5">
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Current Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of orderDetails">
+        <div class="row m-2 mt-4" *ngIf="!order.cancelled && order.status=='Pending'">
+            <div class="col-3">
+                <img src="{{order.imageUrl}}" alt="about us" width="300" height="200">
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span> </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 "> <button type="button" class="btn btn-danger"
+                            (click)="updateCancel(order.id,true)">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Completed Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of orderDetails">
+        <div class="row m-2 mt-4" *ngIf="order.status=='done'">
+            <div class="col-3">
+                <img src="{{order.imageUrl}}" alt="about us" width="300" height="200">
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span> </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 ">
+                        <button type="button" class="btn btn-info" (click)="gotoinvoice(order.id)">Invoice</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+
+
+    <div class="row p-2" style="background-color: #f1f1f1;">
+        <h4 class=" theme-color ">Cancelled Bookings</h4>
+    </div>
+    <div class="mb-3">
+        <hr class="new1">
+    </div>
+    <ng-container *ngFor="let order of orderDetails">
+        <div class="row m-2 mt-4" *ngIf="order.cancelled">
+            <div class="col-3">
+                <img src="{{order.imageUrl}}" alt="about us" width="300" height="200">
+            </div>
+            <div class="col-9 ">
+                <div class="row d-flex justify-content-between"> <span class="font-weight-bold">ORDER ID
+                    </span> <span class="font-weight-bold">{{order.id}}</span>
+                </div>
+
+                <div class="row d-flex justify-content-between"> Booked By <span>{{order.firstName}}
+                        {{order.lastName}}</span>
+                </div>
+                <div class="row d-flex justify-content-between"> Package Name <span>{{order.packageName}}</span> </div>
+                <div class="row d-flex justify-content-between"> Booking Date <span>{{order.date}}</span> </div>
+                <div class="row d-flex justify-content-between"> Car No. <span>{{order.carNo}}</span> </div>
+                <div class="row d-flex justify-content-between"> Washer Name <span>{{order.washerName}}</span> </div>
+
+                <div class="row d-flex justify-content-between mt-3"> <span class="font-weight-bold">Total Amount</span>
+                    <span class="font-weight-bold theme-color">Rs. {{order.price}}/- </span>
+                </div>
+                <div class="row d-flex justify-content-between mt-2">
+                    <div class="col offset-11 ">
+                        <p class="font-weight-bold font-italic" style="color: red;"><del>Cancelled</del></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+</div>

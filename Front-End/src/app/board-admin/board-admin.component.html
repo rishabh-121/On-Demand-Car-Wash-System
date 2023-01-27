@@ -1,0 +1,88 @@
+<!--Table-->
+<table class="table table-striped ">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Package Name</th>
+            <th>Price</th>
+            <th>Washer Name</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Cancelled</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <ng-container *ngFor="let Booking of allBooking">
+
+        <tbody *ngIf="!Booking.cancelled && Booking.status=='Pending'">
+            <tr class="table-info">
+                <td>{{Booking.id}}</td>
+                <td>{{Booking.username}}</td>
+                <td>{{Booking.email}}</td>
+                <td>{{Booking.packageName}}</td>
+                <td>{{Booking.price}}</td>
+                <td>{{Booking.washerName}}</td>
+                <td>{{Booking.status}}</td>
+                <td>{{Booking.date}}</td>
+                <td>{{Booking.cancelled}}</td>
+                <td>IND</td>
+
+            </tr>
+
+        </tbody>
+        <tbody *ngIf="Booking.status=='done'" style="background-color: lightgreen;">
+            <tr style="background-color: lightgreen;">
+                <td>{{Booking.id}}</td>
+                <td>{{Booking.username}}</td>
+                <td>{{Booking.email}}</td>
+                <td>{{Booking.packageName}}</td>
+                <td>{{Booking.price}}</td>
+                <td>{{Booking.washerName}}</td>
+                <td>{{Booking.status}}</td>
+                <td>{{Booking.date}}</td>
+                <td>{{Booking.cancelled}}</td>
+                <td>IND</td>
+
+            </tr>
+
+        </tbody>
+
+        <tbody *ngIf="Booking.cancelled" style="background-color: lightcoral;">
+            <tr style="background-color: lightcoral;">
+                <td>{{Booking.id}}</td>
+                <td>{{Booking.username}}</td>
+                <td>{{Booking.email}}</td>
+                <td>{{Booking.packageName}}</td>
+                <td>{{Booking.price}}</td>
+                <td>{{Booking.washerName}}</td>
+                <td>{{Booking.status}}</td>
+                <td>{{Booking.date}}</td>
+                <td>{{Booking.cancelled}}</td>
+                <td>IND</td>
+
+            </tr>
+
+        </tbody>
+
+    </ng-container>
+    <!--Table body-->
+
+
+</table>
+<!--Table-->
+
+
+
+
+<!-- <div class="container">
+    <header class="jumbotron">
+        <p>{{ content }}</p>
+    </header>
+</div> -->

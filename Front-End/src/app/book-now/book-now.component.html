@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="justify-content-center mt-4 mb-4 " style="width: 100%; border: none solid #000;border-radius: 25px;">
+    <div style="background-color: darkgray; border: none;border-radius: 25px;">
+      <p class="ml-4 p-2">Customer Details</p>
+    </div>
+    <form enctype="application/x-www-form-urlencoded">
+
+      <div class="form-row">
+        <div class="form-group col ml-4">
+          <label for="inputEmail4">First Name</label>
+          <input type="text" [(ngModel)]="customerDet.firstName" name="firstName" class="
+            form-control" placeholder="First name" required="" style="background-color: #e6f2ff" />
+        </div>
+        <div class=" form-group col ml-3 mr-3">
+          <label for="inputPassword4">Last Name</label>
+          <input type="text" [(ngModel)]="customerDet.lastName" name="lastName" class="
+            form-control" placeholder="Last name" required style="background-color: #e6f2ff" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col ml-4">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="xyz@gmail.com" required
+            style="background-color: #e6f2ff" [(ngModel)]="customerDet.email" name="email" />
+        </div>
+        <div class=" form-group col ml-3 mr-3">
+          <label for="inputPassword4">Contact No.</label>
+          <input type="contact" [(ngModel)]="customerDet.contactNo" name="contactNo" class="
+            form-control" id="inputPassword4" placeholder="Enter 10 digit No." required
+            style="background-color: #e6f2ff" />
+        </div>
+      </div>
+      <div class="form-group m-3">
+        <label for="inputAddress">Address</label>
+        <input type="text" [(ngModel)]="customerDet.address1" name="address1" class=" form-control" id="inputAddress"
+          placeholder="Building, House No." required style="background-color: #e6f2ff" />
+      </div>
+      <div class="form-group m-3">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" [(ngModel)]="customerDet.address2" name="address2" class=" form-control" id="inputAddress2"
+          placeholder="Apartment, studio, or floor" required style="background-color: #e6f2ff" />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4 m-3">
+          <label for="inputCity">City</label>
+          <input type="text" [(ngModel)]="customerDet.city" name="city" class=" form-control" id="inputCity" required
+            style="background-color: #e6f2ff" />
+        </div>
+        <div class="form-group col-md-4 m-3">
+          <label for="inputState">State</label>
+          <input id="inputState" [(ngModel)]="customerDet.state" name="state" class=" form-control" required
+            style="background-color: #e6f2ff" />
+        </div>
+        <div class="form-group col-md-2 m-3">
+          <label for="inputZip">Zip</label>
+          <input type="text" [(ngModel)]="customerDet.zip" name="zip" class=" form-control" id="inputZip" required
+            style="background-color: #e6f2ff" />
+        </div>
+      </div>
+      <div class="form-group m-3">
+        <label for="exampleFormControlFile1">Add Car image</label>
+        <input type="file" (change)="onSelectedFile($event)" class="form-control-file" id="exampleFormControlFile1" />
+      </div>
+      <div class="form-row">
+        <div class="form-group col m-3 ml-4">
+          <label for="inputEmail4">Car Number</label>
+          <input type="email" [(ngModel)]="customerDet.carNo" name="carNo" class=" form-control" id="inputEmail4"
+            required style="background-color: #e6f2ff" />
+        </div>
+        <div class="form-group col m-3">
+          <label for="date">Schedule date</label>
+          <input type="date" [(ngModel)]="customerDet.date" name="date" class=" form-control" id="date" required
+            style="background-color: #e6f2ff" />
+        </div>
+      </div>
+    </form>
+    <div class="row m-3">
+      <p style="color: red">Note: All Fields are Mandatory</p>
+      <div class="col offset-6">
+        <button type="submit" data-toggle="modal" data-target="#static" class="btn btn-primary"
+          (click)="updatePrice()">Proceed</button>
+      </div>
+    </div>
+    <!-- Modal to register washer -->
+    <div class="modal fade" id="static" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"> Payment Details</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="cardNumber">
+                  CARD NUMBER</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" name="cardno"
+                    [(ngModel)]="paymentForm.cardNumber" required autofocus />
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="EXPIRYDate">
+                  EXPIRY DATE</label>
+                <label class="offset-7" for="CVV">
+                  CVV </label>
+                <div class="row">
+                  <div class="col-3"><span> <input type="text" class="form-control " id="month" name="month"
+                        placeholder="MM" [(ngModel)]="paymentForm.expMonth" required autofocus />
+                    </span></div>
+                  <div class="col-3"><span> <input type="text" class="form-control" id="year" placeholder="YY"
+                        name="year" [(ngModel)]="paymentForm.expYear" required autofocus />
+                    </span></div>
+                  <div class="col-3 offset-2"><span> <input type="text" class="form-control" id="year" placeholder="CVV"
+                        name="cvv" [(ngModel)]="paymentForm.cvv" required autofocus />
+                    </span></div>
+                </div>
+              </div>
+
+
+              <div class="modal-footer mt-3">
+
+                <br />
+                <button class="btn btn-info btn-lg btn-block" style="background-color: cadetblue;"><span
+                    class="pull-right"><span></span>INR {{amount}}/.</span>Final Payment</button>
+                <button class="btn btn-success btn-lg btn-block" role="button" (click)="chargeCreditCard()">Pay</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

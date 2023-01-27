@@ -1,0 +1,116 @@
+<div id="invoice">
+
+    <div class="toolbar hidden-print">
+        <div class="text-right">
+            <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+            <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+        </div>
+        <hr>
+    </div>
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col-3">
+
+                        <img src="{{invoiceDetails.imageString}}" alt="about us" width="300" height="200" />
+
+                    </div>
+                    <div class="col-1">
+                        <h1 style="color:tomato ;"><br>-></h1>
+                    </div>
+                    <div class="col-1 offset-1">
+                        <h2 class="name">
+                            <a target="_blank" href="#">
+                                Java<br> Car<br> Wash
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="col-1 offset-1">
+                        <h1 style="color:tomato;"><br>-></h1>
+                    </div>
+                    <div class="col company-details">
+                        <img src="{{invoiceDetails.washedImageString}}" alt="about us" width="300" height="200" />
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="row contacts">
+                    <div class="col invoice-to">
+                        <div class="text-gray-light">INVOICE TO:</div>
+                        <h2 class="to">{{invoiceDetails.firstName}} {{invoiceDetails.lastName}}</h2>
+
+                        <div class="address">{{invoiceDetails.address1}}, {{invoiceDetails.address2}}<br>
+                            {{invoiceDetails.city}}, {{invoiceDetails.state}}, {{invoiceDetails.zip}}
+                        </div>
+                        <div class="email">{{invoiceDetails.email}}</div>
+                    </div>
+                    <div class="col invoice-details">
+                        <h5 style="color: cornflowerblue;">Order Id: {{invoiceDetails.id}}</h5>
+                        <div class="date">Washer Name: {{invoiceDetails.washerName}} </div>
+                        <div class="date">Date of Invoice: {{invoiceDetails.date}}</div>
+
+                    </div>
+                </div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left">Description</th>
+                            <th class="text-right">Package Name</th>
+                            <th class="text-right">Add-Ons</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="no">01</td>
+                            <td class="text-left pb-5">
+                                <h3>
+                                    {{invoiceDetails.packageDesc}}
+
+
+
+
+                                </h3>
+
+
+                            </td>
+                            <td class="unit">{{invoiceDetails.packageName}}</td>
+                            <td class="p-5">No</td>
+                            <td class="total">{{invoiceDetails.price}}</td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">SUBTOTAL</td>
+                            <td>{{invoiceDetails.price}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">TAX 0%</td>
+                            <td>00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">GRAND TOTAL</td>
+                            <td>Rs.{{invoiceDetails.price}}/-</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="thanks">Thank you!</div>
+                <div class="notices">
+                    <div class="notice">We love to shine cars.</div>
+                    <div>We hope you loved our service too.</div>
+                </div>
+            </main>
+            <footer>
+                Invoice was created on a computer and is valid without the signature and seal.
+            </footer>
+        </div>
+
+        <div></div>
+    </div>
+</div>

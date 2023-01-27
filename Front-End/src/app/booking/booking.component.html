@@ -1,0 +1,265 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col offset-2 d-block">
+      <h2>Our Washing Services</h2>
+      <p style="color: darkgray">
+        <strong>
+          We are literally going to change the way people think about car
+          cleaning. It is a unique mechanized car cleaning concept<br />
+          where cars are getting pampered by the latest equipments including
+          high pressure cleaning machines, spray injection and extraction
+          machines,<br />
+          high powered vacuum cleaners, steam cleaners and so on.</strong>
+      </p>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="card mx-5 mt-3" *ngFor="let pack of package" style="width: 25rem">
+      <img src="{{pack.image}}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title"><strong>{{pack.packageName}}</strong></h5>
+        <p class="card-text" style="color: darkgray" style="color: darkgray">
+          {{pack.packageDesc}}
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.{{pack.price}}/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a class="btn btn-danger mx-2" (click)="gotoBookNow(pack)" style="color: whitesmoke">Book Now</a>
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <!-- <div class="card mx-5 mt-3" style="width: 25rem">
+      <img
+        src="https://www.speedcarwash.com/images/services/gold-wash.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>GOLD WASH</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Complete vacuuming of cars incl. seats and boot + Washing and cleaning
+          of foot mats + Body Shampooing and washing including door frames +
+          Tyre arches cleaning + Underbody wash + Engine hot water wash and
+          dressing + Side doors cleaning + Dash board cleaning and polishing +
+          tires and alloy wheels treatment + Car perfume spray
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.500/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-3" style="width: 25rem">
+      <img
+        src="https://www.speedcarwash.com/images/services/platinum-wash.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>PLATINUM WASH</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Complete dry cleaning of a interior including seats (carpet/leather),
+          roof, mats and boot + Complete vacuuming of cars incl. seats and boot
+          + Washing and cleaning of foot mats + Pre washing of car + Foam
+          cleaning of exterior + Tyre arches cleaning + Underbody wash + Engine
+          hot water wash and dressing + Washing and cleaning of door frames +
+          Side doors cleaning and polishing + Dash board cleaning and polishing
+          + Tyre and alloy polishing + Scratch proof windshield spray + Car
+          perfume spray
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.1400/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-5" style="width: 25rem">
+      <img
+        src="https://www.speedcarwash.com/images/services/internal-clean.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>INTESIVE INTERNAL CLEANING</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Complete dry cleaning of a interior including seats (carpet/leather),
+          roof, mats and boot, Dressings to all vinyl, plastic, rubber giving
+          your car spotless, shiny, glossy interior.
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.1150/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-5" style="width: 25rem">
+      <img
+        src="https://www.speedcarwash.com/images/services/rubbing.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>WAX RUBBING AND BUFFING</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Over the time cars paint erodes due to the effects of sunlight, UV
+          radiation, acid rain, salt, dirt, bird droppings and Air pollution. We
+          give NEW LOOK TO PAINTED SURFACES by repairing the paint scratches,
+          swirls marks, dullness, etc by using special rubbing compounds and
+          imported polishes approved by the car manufacturers
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.1400/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-5" style="width: 25rem">
+      <img
+        src="https://www.speedcarwash.com/images/services/teflon-coating.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>TEFLON COATING</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Our PTFE based Polymer paint sealant creates slippery, slick barrier
+          that protects the paint finishes, reduces fading & oxidation of paint.
+          It repels dirt & grime, accelerates water run-off to reduce spotting,
+          smoothness weathered surface and removes scratches giving depth to the
+          paint.
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.2500/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-5" style="width: 25rem">
+      <img
+        src="https://www.detailxperts.net/wp-content/uploads/2016/05/automobile-automotive-car-1104768-e1550891248114.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>Interior Detail Clean</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Vacuum Cleaning+ +Full Interior+Diggi+Engine+Interior Deep Dry
+          Clean+Seats+Seat Belts+Roof+Floor Carpet+Floor Mats +Boot/Trunk+Doors
+          +Door Panel +Dash-Board +Centre Console
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.800/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div>
+
+    <div class="card mx-5 mt-5" style="width: 25rem">
+      <img
+        src="https://previews.123rf.com/images/ufabizphoto/ufabizphoto1712/ufabizphoto171205179/91856856-car-polish-wax-worker-hands-holding-a-polisher.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><strong>Basic Polishing</strong></h5>
+        <p class="card-text" style="color: darkgray">
+          Door-beads Dash-Board Tyres Outer Black PartsAC Vents Clean Windows
+          Clean Mirrors Clean Wheel Arches Clean Wheel Alloy Clean Foam Layer
+          Gloves Rub Jet Wash
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <p style="color: blue">FOR HATCHBACK CAR</p>
+        </li>
+        <li class="list-group-item"><strong>@ RS.800/-</strong></li>
+      </ul>
+      <div class="card-body">
+        <a
+          class="btn btn-danger mx-2"
+          (click)="gotoBookNow()"
+          style="color: whitesmoke"
+          >Book Now</a
+        >
+        <a href="#" class="btn btn-info mx-2">Schedule Later</a>
+      </div>
+    </div> -->
+  </div>
+</div>
